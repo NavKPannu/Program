@@ -1,0 +1,158 @@
+using System;
+using System.CodeDom;
+using static System.Console;
+
+namespace Pay_Calculator
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            // This program is created to calculate total pay including overtime pay.
+            
+            // It also gives the name of the province or territories.
+
+            double prate = 25*0.025, payperhour = 25.00, totalpay;
+            double hoursworked =0.0;
+            string stateabv, state;
+            
+
+            hoursworked = askhours();
+            stateabv = askstate();
+
+            totalpay = calcpay(hoursworked, prate, payperhour);
+            WriteLine("\nYour province is: \n");
+
+            fullstatename(stateabv);
+            dispalyresult(totalpay);
+            
+
+
+        }
+        // Method to dispaly 
+        static double askhours()
+        {
+            double hrs;
+            WriteLine("Please enter your total hours worked this week: ");
+            hrs = double.Parse(ReadLine());
+            
+            return hrs;
+        }
+        // Method to ask the abbreviation for state
+        static string askstate()
+        {
+            string abb;
+            WriteLine("\nPlease enter abreviation of your province: ");
+            WriteLine("");
+            abb = ReadLine();
+            return abb;
+
+        }
+        // Method to calculate Pay
+        static double calcpay(double workhrs,double r, double hourlypay)
+        {
+            double exhrs, overtime, overtimepay, totalpay ;
+            if (workhrs > 40.00)
+            {
+                exhrs = workhrs - 40.00;
+                overtime = 25 + r;
+                overtimepay = overtime * exhrs;
+                totalpay = hourlypay * 40 + overtimepay;
+
+            }
+            else
+            {
+                totalpay = hourlypay * workhrs;
+
+            }
+            return totalpay;
+        }
+        //Method to display results
+        static void dispalyresult(double pay)
+        {
+            WriteLine("\nYour total Pay is: " + pay);
+            ReadKey();
+        }
+        static void fullstatename(string st)
+        {
+            //string s;
+            switch (st)
+            {
+                case "Bc":
+                case "bC":
+                case "bc":
+                case "BC": WriteLine("British Columbia");
+                    break;
+
+                case "Ab":
+                case "aB":
+                case "ab":
+                case "AB": WriteLine("Alberta");
+                    break;
+
+                case "ON":
+                case "on":
+                case "On":
+                case "oN": WriteLine("Ontario");
+                    break;
+                case "NL":
+                case "nl":
+                case "Nl":
+                case "nL": WriteLine("Newfoundland and Labrador");
+                    break;
+
+                case "PE":
+                case "pe":
+                case "Pe":
+                case "pE":WriteLine("Prince Edward Island");
+                    break;
+                case "NS":
+                case "ns":
+                case "Ns":
+                case "nS":WriteLine("Nova Scotia");
+                    break;
+                case "NB":
+                case "nb":
+                case "Nb":
+                case "nB":WriteLine("New Brunswick");
+                    break;
+                case "QC":
+                case "qc":
+                case "Qc":
+                case "cQ":WriteLine("Quebec");
+                    break;
+                case "MB":
+                case "mB":
+                case "Mb":
+                case "mb":WriteLine("Manitoba");
+                    break;
+                case "SK":
+                case "Sk":
+                case "sK":
+                case "sk":WriteLine("Saskatchewan");
+                    break;
+                case "YT":
+                case "Yt":
+                case "yT":
+                case "yt":WriteLine("Yukon");
+                    break;
+                case "NT":
+                case "Nt":
+                case "nT":
+                case "nt":WriteLine("Northwest Territories");
+                    break;
+                case "NU":
+                case "nu":
+                case "Nu":
+                case "nU":WriteLine("Nunavat");
+                    break;
+
+
+                default: 
+                    WriteLine("Wrong Abbreviation entered.");
+                    break;
+            }
+                        
+        }
+    }
+}
