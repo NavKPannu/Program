@@ -1,0 +1,32 @@
+using System;
+using static System.Console;
+
+
+
+namespace Tip_calculation
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            double price, tip1, tip2, tip3;
+            WriteLine("Please enter the cost of the services ");
+            price = double.Parse(Console.ReadLine());
+            tip1 = price * 0.15;
+            tip2 = price * 0.18;
+            tip3 = price * 0.20;
+
+            WriteLine(" 15 percent tip will be -------   {0:C} " , tip1);
+            WriteLine(" 18 percent tip will be -------   {0:C} ", tip2); 
+            WriteLine(" 20 percent tip will be -------   {0:C} " , tip3);
+            WriteLine("");
+            WriteLine("Total cost with 15% tip will be   {0:C} " , (price + tip1));
+            WriteLine("Total cost with 18% tip will be   {0:C} " , (price + tip2));
+            WriteLine("Total cost with 20% tip will be   {0:C} " , (price + tip3));
+            ReadKey();
+
+
+        }
+    }
+}
+
