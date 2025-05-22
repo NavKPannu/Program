@@ -1,0 +1,62 @@
+using System;
+using static System.Console;
+
+namespace Pannu_Navdeep_A1_Q2
+{
+    internal class Program
+    {
+        public static void Main()
+        {
+            string fname, saying;
+            WriteLine("This program asks your name and your favorite saying.");
+            WriteLine("Then it asks time in seconds and display it in hours and minutes");
+            ReadKey();
+            WriteLine("");
+            WriteLine("Please enter your name");
+            fname = enterstring();
+            WriteLine("\nPlease enter your favorite saying: ");
+            saying = enterstring();
+            WriteLine("");     
+            double sec_entered, time_min, time_hrs;
+            sec_entered = askseconds();
+            time_hrs = sectohours(sec_entered);
+            time_min = sectomin(sec_entered);
+            displayresult(fname, saying, time_hrs, time_min);
+            ReadKey();
+         }
+        public static string enterstring()
+        {
+            string name;
+            name = ReadLine();
+            return(name);
+        }
+        public static double askseconds()
+        {
+            double seconds;
+            WriteLine("Please enter time in seconds: ");
+            seconds = double.Parse(ReadLine());
+            return(seconds);
+        }
+        public static double sectohours(double secs)
+        {
+            double hrs;
+            hrs = secs / 120.00;
+            return(hrs);
+        }
+        public static double sectomin(double secs)
+        {
+            double mins;
+            mins = secs / 60.00;
+            return (mins);  
+        }
+        public static void displayresult(string name, string say, double hrs,double mins)
+        {
+            WriteLine(" \n Your first name is :  " + name);
+            WriteLine(" Your saying is     :  " + say);
+            WriteLine(" Your minutes is    :  " + mins);
+            WriteLine(" Your hours are     :  " + hrs);
+            
+
+        }
+    }
+}
