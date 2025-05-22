@@ -2,7 +2,7 @@ using System;
 using System.CodeDom;
 using static System.Console;
 
-namespace Pay_Calculator
+namespace Pannu_300379702_CH5
 {
     internal class Program
     {
@@ -12,14 +12,15 @@ namespace Pay_Calculator
             
             // It also gives the name of the province or territories.
 
-            double prate = 25*0.025, payperhour = 25.00, totalpay;
+            double prate = 25*0.025, payperhour, totalpay;
             double hoursworked =0.0;
             string stateabv, state;
             
 
             hoursworked = askhours();
             stateabv = askstate();
-
+            WriteLine("Please enter the pay rate:  ");
+            payperhour = double.Parse(ReadLine());
             totalpay = calcpay(hoursworked, prate, payperhour);
             WriteLine("\nYour province is: \n");
 
@@ -45,6 +46,7 @@ namespace Pay_Calculator
             WriteLine("\nPlease enter abreviation of your province: ");
             WriteLine("");
             abb = ReadLine();
+            WriteLine("");
             return abb;
 
         }
@@ -81,75 +83,75 @@ namespace Pay_Calculator
                 case "Bc":
                 case "bC":
                 case "bc":
-                case "BC": WriteLine("British Columbia");
+                case "BC": WriteLine("      British Columbia");
                     break;
 
                 case "Ab":
                 case "aB":
                 case "ab":
-                case "AB": WriteLine("Alberta");
+                case "AB": WriteLine("      Alberta");
                     break;
 
                 case "ON":
                 case "on":
                 case "On":
-                case "oN": WriteLine("Ontario");
+                case "oN": WriteLine("      Ontario");
                     break;
                 case "NL":
                 case "nl":
                 case "Nl":
-                case "nL": WriteLine("Newfoundland and Labrador");
+                case "nL": WriteLine("      Newfoundland and Labrador");
                     break;
 
                 case "PE":
                 case "pe":
                 case "Pe":
-                case "pE":WriteLine("Prince Edward Island");
+                case "pE":WriteLine("       Prince Edward Island");
                     break;
                 case "NS":
                 case "ns":
                 case "Ns":
-                case "nS":WriteLine("Nova Scotia");
+                case "nS":WriteLine("       Nova Scotia");
                     break;
                 case "NB":
                 case "nb":
                 case "Nb":
-                case "nB":WriteLine("New Brunswick");
+                case "nB":WriteLine("       New Brunswick");
                     break;
                 case "QC":
                 case "qc":
                 case "Qc":
-                case "cQ":WriteLine("Quebec");
+                case "cQ":WriteLine("       Quebec");
                     break;
                 case "MB":
                 case "mB":
                 case "Mb":
-                case "mb":WriteLine("Manitoba");
+                case "mb":WriteLine("       Manitoba");
                     break;
                 case "SK":
                 case "Sk":
                 case "sK":
-                case "sk":WriteLine("Saskatchewan");
+                case "sk":WriteLine("       Saskatchewan");
                     break;
                 case "YT":
                 case "Yt":
                 case "yT":
-                case "yt":WriteLine("Yukon");
+                case "yt":WriteLine("       Yukon");
                     break;
                 case "NT":
                 case "Nt":
                 case "nT":
-                case "nt":WriteLine("Northwest Territories");
+                case "nt":WriteLine("       Northwest Territories");
                     break;
                 case "NU":
                 case "nu":
                 case "Nu":
-                case "nU":WriteLine("Nunavat");
+                case "nU":WriteLine("       Nunavat");
                     break;
 
 
                 default: 
-                    WriteLine("Wrong Abbreviation entered.");
+                    WriteLine("     Wrong Abbreviation entered.");
                     break;
             }
                         
