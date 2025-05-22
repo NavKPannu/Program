@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Simple_calcultor fro addition and multiplication
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Multiplyclick(object sender, EventArgs e)
+        {
+            int num1, num2, total1;
+            if (int.TryParse(boxEnternumber1.Text, out num1) && int.TryParse(boxEnternumber2.Text, out num2))
+            {
+                if (num1 > 0 && num2 > 0)
+                {
+                    total1 = num1 * num2;
+                    lblResult.Visible = true;
+                    lblResult.Text = string.Format("Result = {0}", total1);
+                }
+                else
+                {
+                    lblResult.Visible = true;
+                    lblResult.ForeColor = Color.Red;
+                    lblResult.Text = string.Format("Value must be numeric and > 0.");
+                }
+            }
+            else
+            {
+                lblResult.Visible = true;
+                lblResult.ForeColor = Color.Red;
+                lblResult.Text = string.Format("Value must be numeric and > 0.");
+            }
+            
+                    
+        }
+
+        private void AddClick(object sender, EventArgs e)
+        {
+            int num1, num2, total2;
+            if (int.TryParse(boxEnternumber1.Text, out num1) && int.TryParse(boxEnternumber2.Text, out num2))
+            {
+                if (num1 > 0 && num2 > 0)
+                {
+                    total2 = num1 + num2;
+                    lblResult.Visible = true;
+                    lblResult.Text = string.Format("Result = {0}", total2);
+                }
+                else
+                {
+                    lblResult.Visible = true;
+                    lblResult.ForeColor = Color.Red;
+                    lblResult.Text= string.Format("Value must be numeric and > 0.");
+                }
+            }
+            else
+            {
+                lblResult.Visible = true;
+                lblResult.ForeColor = Color.Red;
+                lblResult.Text = string.Format("Value must be numeric and > 0.");
+            }
+            
+        }
+
+        private void Resetclick(object sender, EventArgs e)
+        {
+            
+            lblResult.ForeColor = Color.Yellow;
+            boxEnternumber1.Clear();
+            boxEnternumber2.Clear();
+            lblResult.Visible = false;
+        }
+    }
+}
