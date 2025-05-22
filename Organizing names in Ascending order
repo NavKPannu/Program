@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Versioning;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+
+namespace Acending_order_names
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Program to display sorted names.
+
+            string[] fullname = new string[5];
+            process();
+            ReadKey();
+        }
+        public static void process()
+        {
+            string[] fullname = new string[5];
+            fullname = enternames();
+            Clear();
+            printname(fullname);
+            askque();
+        }
+        public static string[] enternames()
+        {
+            string[] names = new string[5];
+            WriteLine("Please enter five names in following manner.");
+            WriteLine("Enter first name, Initial letter for middle name, and last name.");
+            WriteLine("You can enter the names as many times as you want.\n\n");
+            WriteLine("Please enter names:\n");
+            for (int i = 0; i < 5; i++)
+            {
+                names[i] = ReadLine();
+            }
+            return names;
+        }
+        public static void printname(string[] s)
+        {
+            string[] name = new string[3];
+            string[] n = new string[5];
+            WriteLine("The sorted names are:");
+            for (int i = 0; i < s.Length; i++)
+            {
+                name = s[i].Split(' ');
+                         
+                if (name.Length == 1)
+                { n[i] = ($"{name[0],-10}"); }
+                else if (name.Length ==2)
+                { n[i] = ($"{name[1],-10},{name[0],-15}"); }
+                else
+                { n[i] = ($"{name[2],-10},{name[0],-3} {name[1],-20}"); }
+
+            }
+            Array.Sort(n);
+            foreach (string val in n)
+                WriteLine(val);
+        }
+        public static void askque()
+        {
+            WriteLine(" Do you want to enter more names? ");
+            string rep = ReadLine();
+            switch(rep)
+                {
+                case "y":
+                case "Y":
+                case "Yes":
+                case "yes": process();
+                    break;
+                case "n":
+                case "N":
+                case "no":
+                case "No": break;
+                default:WriteLine("Incorrect entry.");
+                    break;
+                }
+            }
+
+        }
+    } 
