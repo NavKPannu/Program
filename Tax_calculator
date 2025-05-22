@@ -1,0 +1,57 @@
+using System;
+using static System.Console;
+
+namespace Tax_calculator
+{
+    internal class Program
+    {
+        public static void Main()
+        {
+            WriteLine("This program is to calculate your current year taxes.");
+            WriteLine("You are required to enter your address and prior year Assessed value");
+
+            const int exemption = 30000;
+            String address;
+            double priorassesvalue, valueafterexemp, increaseinvalue, tax;
+            WriteLine("\n Please enter your address  : ");
+            address = ReadLine();
+            WriteLine("");
+            WriteLine(" Please enter your prior property's assessed value : ");
+            priorassesvalue = double.Parse(ReadLine());
+
+            valueafterexemp = priorassesvalue - exemption;
+
+            increaseinvalue = increasevalue(valueafterexemp);
+
+            tax = calculateTax(increaseinvalue);
+
+            displayResult(increaseinvalue, tax);
+            WriteLine("");
+            ReadKey();
+
+        }
+        public static double increasevalue(double value)
+        {
+            double newvalue;
+            newvalue = value + value * 0.032;
+            return newvalue;
+        }
+        public static double calculateTax(double value)
+        {
+            double newvalue;
+            newvalue = value / 1000 * 12.05;
+            return newvalue;
+        }
+        public static void displayResult(double v1, double v2)
+        {
+            WriteLine("");
+            WriteLine(" The property's current year Assessed value is   {0:C2}", v1);
+            WriteLine(" Your property tax is -------------------------  {0:C2}", v2);
+
+        }
+    }
+}
+        
+    
+
+
