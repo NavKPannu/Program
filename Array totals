@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+
+namespace Pannu_300379702_Arraytotals
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Program to create a two dimensional array
+            int row, col;
+
+            WriteLine("    Program to create a two dimensional array.");
+            WriteLine("\n");
+
+            // Get array size.
+            row = enterrowvalues();
+            col = entercolvalues();
+            int [,] anarray = new int [row, col];
+            int[] rowtotal = new int[row];
+            int[] coltotal = new int[col];
+
+            //Create array
+            anarray = createarray(row,col);
+
+            // Get row and col totals
+            coltotal = calctotalcol(anarray, row, col);
+            rowtotal = calctotalrow(anarray, row, col);
+
+            displayarray(anarray, rowtotal, coltotal);
+            ReadKey();
+        }
+
+        public static int enterrowvalues()
+        {
+            int row;
+            WriteLine("Enter the number of rows:");
+            while (int.TryParse(ReadLine(), out row) == false)
+            { WriteLine(" Wrong value entered. Please enter the number of rows :"); }
+            return row;
+        }
+        public static int entercolvalues()
+        {
+            int col;
+            WriteLine("Enter the number of columns:");
+            while (int.TryParse(ReadLine(), out col) == false)
+            { WriteLine(" Wrong value entered. Please enter the number of col :"); }
+            return col;
+        }
+        public static int[,] createarray(int r, int c)
+        {
+            int [,] val = new int [r,c];
+            int v;
+            WriteLine("Please enter {0} values :",(r*c));
+            for (int i = 0; i < r; i++)
+            {
+                for (int j = 0; j < c; j++)
+                {
+                    while (int.TryParse(ReadLine(), out v) == false)
+                        WriteLine("wrong value entered. Please enter again.");
+                    val[i, j] = v;
+                }
+                
+            }
+            return val;
+        }
+        public static void displayarray(int[,] arr, int [] rowtotal, int [] coltotal) 
+        {
+            WriteLine(" The new array created is :\n");
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    Write(arr[i,j] + "\t");
+                    
+                }
+                Write("| "+rowtotal[i]);
+                WriteLine();
+            }
+            WriteLine("-----------");
+            foreach (int val in coltotal)
+                Write(val+"\t");
+        }
+        public static int [] calctotalrow(int[,] arr, int i, int j)
+        {
+            int total = 0;
+            int [] t = new int [i];
+            for (int r = 0; r < i; r++)
+            {
+                for (int c = 0; c < j; c++)
+                {
+                    total += arr[r, c];
+                   
+                }
+                t[r] = total;
+                total = 0;
+            }
+            return t;
+        }
+        public static int[] calctotalcol(int[,] arr, int i, int j)
+        {
+            int total1 = 0;
+            int[] t1 = new int [j];
+            for (int c = 0; c < j; c++)
+            {
+                for (int r = 0; r < i; r++)
+                { total1 += arr[r, c];
+                }
+                t1[c] = total1;
+                total1 = 0;
+            }
+            return t1;
+        }
+
+
+    }
+}
