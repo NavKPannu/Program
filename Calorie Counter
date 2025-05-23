@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Console;
+
+namespace Pannu_Calories
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+
+        {
+            // Program to calculate average calories per day and per meal.
+
+            int[,] calories = new int[7, 3] { {100,200,300 },{100,200,300 },{100,200,300 },{100,200,300 },{100,200,300 },
+                {100,200,300 },{100,200,300 } };
+            double[] dailyavg = new double[7];
+            double[] mealavg = new double[3];
+            dispinst();
+                       
+            dailyavg = avgperday(calories);
+            mealavg = avgpermeal(calories);
+            
+            dispvalue(calories);
+            WriteLine("Press any key to continue.");
+            WriteLine();
+            ReadKey();
+            dispavgs(dailyavg, mealavg);
+            ReadKey();
+
+        }
+        public static void dispinst() 
+        {
+            WriteLine("This program takes values of the calory intake for three meals a day.");
+            WriteLine("Please enter three calory values a day.");
+            WriteLine("Breakfast, Lunch, Dinner.");
+            WriteLine("For seven days a week.");
+            WriteLine("This program will evaluate average daily calories");
+            WriteLine("And average per meal per week.");
+            WriteLine("Prees any key to continue.");
+            WriteLine("\n\n");
+        }
+        
+        public static void dispvalue(int [,] fcal)
+        {
+            WriteLine("Calories consumed during a week.\n");
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    
+                    Write($"{fcal[i, j]}"+"\t");  
+                }
+                WriteLine();
+            }
+        }
+        public static double[] avgperday(int[,] calories)
+             {
+            int total = 0;
+            double [] avg = new double[7];
+            for (int r = 0; r < 7; r++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    total += calories[r, c];
+                }
+                avg[r] = total/calories.GetLength(1);
+                total = 0;
+            }
+            return avg;
+        }
+        public static double[] avgpermeal(int[,] calories)
+        {
+            int total1 = 0;
+            double[] avg1 = new double[3];
+            for (int c = 0; c < 3; c++)
+            {
+                for (int r = 0; r < 7; r++)
+                { total1 += calories[r, c]; }
+                avg1[c] = total1/7;
+                total1 = 0;
+            }
+            return avg1;
+        }
+        public static void dispavgs(double[] davg, double[] mavg)
+        {
+            WriteLine("Daily average are as follows:\n");
+            int day = 0;
+            
+            foreach (int c in davg)
+                {
+                     WriteLine("Day {0}: {1,6:N0}", day,c);
+                        day++;
+                }
+             string[] meal = new string [3] {"Breakfast","Lunch","Dinner"};
+            int i =0;
+            WriteLine("\nPer day average:\n");
+            foreach (int d in mavg)
+                {
+                    WriteLine("{0,-10}  : {1,6:N0}", meal[i],d);
+                    i++;
+                }
+            }
+
+        }
+    }
+
