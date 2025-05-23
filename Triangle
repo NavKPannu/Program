@@ -1,0 +1,112 @@
+using System;
+using static System.Console;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Runtime.CompilerServices;
+
+
+namespace Pannu_300379702_chapter6
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            displayinstructions();
+            processinstructions();
+            ReadKey();
+        }
+        public static void processinstructions()
+        {
+            string chartoprint, n; int size;
+            WriteLine("\n\nPlease enter a character from the following to build a triangle:");
+            WriteLine("\t\t# ,% ,@ ,* ,+ , &");
+            chartoprint = ReadLine();
+            WriteLine("\nPlease enter a number for the triangle:");
+            n = ReadLine();
+            WriteLine();
+            if (int.TryParse(n, out size) == false)
+            {
+                WriteLine("Invalid Input.");
+                ReadKey();
+                return;
+            }
+            if ((size < 3) || (size > 10))
+            {
+                WriteLine("Number out of given range.\n");
+                checkchar(chartoprint, 3);
+            }
+            else
+            {
+                checkchar(chartoprint, size);
+                return;
+            }
+        }
+        public static void displayinstructions()
+        {
+            WriteLine("     This program prints a triangle using your choice of shape.");
+            WriteLine("     You would also need to enter a number between 3 and 10.");
+            WriteLine("     Press any key to start.");
+        }
+        // Method to check if characters entered were correct.
+        public static void checkchar(string text, int size)
+        {
+            switch (text)
+            {
+                case "#":
+                case "%":
+                case "@":
+                case "*":
+                case "+":
+                case "&":
+                    maketria(text, size);
+
+                    break;
+                default:
+                    WriteLine("Invalid Character entered.\n");
+                    maketria("*", size);
+                    break;
+            }
+            return;
+        }
+        //Method to make triangle with characters
+        public static void maketria(string s, int sz)
+        {
+            int i, j;
+            for (i = 1; i <= sz; i++)
+            {
+                Write(s);
+                for (j = 2; j <= i; j++)
+                {
+                    Write(s);
+                }
+                WriteLine("");
+            }
+            for (int k = sz; k > 1; k--)
+            {
+                Write(s);
+                for (j = 2; j < k; j++)
+                {
+                    Write(s);
+                }
+                WriteLine(" ");
+            }
+            moretria();
+            return;
+        }
+        public static void moretria()
+        {
+            string ans;
+            WriteLine("Do you want to print another triangle? write 'y' for yes or 'n' for no.");
+            ans = ReadLine();
+            if (ans == "y")
+            {
+                processinstructions();
+            }
+            return;
+        }
+    }
+}
+
+
