@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Runtime.CompilerServices;
 
 
-namespace Pannu_300379702_chapter6
+namespace Pannu_create_triangle
 {
     public class Program
     {
